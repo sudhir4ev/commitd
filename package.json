@@ -6,7 +6,10 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "prepare": "husky"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.13",
@@ -14,5 +17,14 @@
     "@astrojs/sitemap": "^3.7.0",
     "astro": "^5.17.1",
     "sharp": "^0.34.3"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^15.4.3",
+    "prettier": "^3.8.1",
+    "prettier-plugin-astro": "^0.14.1"
+  },
+  "lint-staged": {
+    "*.{js,ts,jsx,tsx,json,css,scss,md,astro,yml,yaml}": "prettier --write"
   }
 }
