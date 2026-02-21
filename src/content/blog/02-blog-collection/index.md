@@ -1,7 +1,7 @@
 ---
-title: "Blog Collection"
-description: "How to add posts to the blog."
-date: "2024-03-21"
+title: 'Blog Collection'
+description: 'How to add posts to the blog.'
+date: '2024-03-21'
 tags:
   - tutorial
 ---
@@ -33,22 +33,21 @@ Metadata is required for each post.
 
 ```astro
 ---
-title: "Blog Collection";
-description: "How to add posts to the blog.";
-date: "2024-03-21";
-draft: false;
-tags:
-  - tutorial
+title: 'Blog Collection'
+description: 'How to add posts to the blog.'
+date: '2024-03-21'
+draft: false
+tags: -tutorial
 ---
 ```
 
-| Field       | Req | Type    | Remarks                                          |
-| :---------- | :-- | :------ | :----------------------------------------------- |
-| title       | Yes | string  | Title of the content. Used in SEO and RSS.       |
-| description | Yes | string  | Description of the content. Used in SEO and RSS. |
-| date        | Yes | string  | Must be a valid date string (able to be parsed). |
-| draft       | No  | boolean | If draft: true, content will not be published.   |
-| tags        | No  | string array | Tags to organize content |
+| Field       | Req | Type         | Remarks                                          |
+| :---------- | :-- | :----------- | :----------------------------------------------- |
+| title       | Yes | string       | Title of the content. Used in SEO and RSS.       |
+| description | Yes | string       | Description of the content. Used in SEO and RSS. |
+| date        | Yes | string       | Must be a valid date string (able to be parsed). |
+| draft       | No  | boolean      | If draft: true, content will not be published.   |
+| tags        | No  | string array | Tags to organize content                         |
 
 ---
 
@@ -56,12 +55,11 @@ All that's left to do is write the content under the metadata.
 
 ```astro
 ---
-title: "Blog Collection";
-description: "How to add posts to the blog.";
-date: "2024-03-21";
-draft: false;
-tags:
-  - tutorial
+title: 'Blog Collection'
+description: 'How to add posts to the blog.'
+date: '2024-03-21'
+draft: false
+tags: -tutorial
 ---
 
 ## Working with the blog collection
