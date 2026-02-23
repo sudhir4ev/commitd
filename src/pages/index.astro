@@ -18,6 +18,8 @@ const projects: CollectionEntry<'projects'>[] = (
   .filter((project) => !project.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, SITE.NUM_PROJECTS_ON_HOMEPAGE)
+
+const contentPages = await getCollection('pages')
 ---
 
 <Layout title={HOME.TITLE} description={HOME.DESCRIPTION}>
@@ -98,6 +100,26 @@ const projects: CollectionEntry<'projects'>[] = (
               projects.map((project) => (
                 <li>
                   <ArrowCard entry={project} />
+                </li>
+              ))
+            }
+          </ul>
+        </section>
+
+        <section class="animate space-y-6">
+          <div class="flex flex-wrap items-center justify-between gap-y-2">
+            <h2 class="font-semibold text-black dark:text-white">
+              Pages
+            </h2>
+            <Link href="/content"> See all </Link>
+          </div>
+          <ul class="not-prose flex flex-col gap-3">
+            {
+              contentPages.map((entry) => (
+                <li>
+                  <Link href={`/content/${entry.id}`}>
+                    {entry.data.title}
+                  </Link>
                 </li>
               ))
             }
