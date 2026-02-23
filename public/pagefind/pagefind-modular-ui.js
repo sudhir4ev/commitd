@@ -35,12 +35,7 @@
       return (this.element.addEventListener(e, t), this)
     }
     addTo(e) {
-      return (
-        e instanceof i
-          ? e.element.appendChild(this.element)
-          : e.appendChild(this.element),
-        this.element
-      )
+      return (e instanceof i ? e.element.appendChild(this.element) : e.appendChild(this.element), this.element)
     }
   }
   var T = async (i = 100) => new Promise((e) => setTimeout(e, i)),
@@ -63,26 +58,20 @@
           this.initExisting(e.inputElement)
         } else if (e.containerElement) this.initContainer(e.containerElement)
         else {
-          console.error(
-            '[Pagefind Input component]: No selector supplied for containerElement or inputElement'
-          )
+          console.error('[Pagefind Input component]: No selector supplied for containerElement or inputElement')
           return
         }
         ;(this.inputEl.addEventListener('input', async (t) => {
           if (this.instance && typeof t?.target?.value == 'string') {
             this.updateState(t.target.value)
             let s = ++this.searchID
-            if ((await T(this.debounceTimeoutMs), s !== this.searchID))
-              return null
+            if ((await T(this.debounceTimeoutMs), s !== this.searchID)) return null
             this.instance?.triggerSearch(t.target.value)
           }
         }),
           this.inputEl.addEventListener('keydown', (t) => {
             ;(t.key === 'Escape' &&
-              (++this.searchID,
-              (this.inputEl.value = ''),
-              this.instance?.triggerSearch(''),
-              this.updateState('')),
+              (++this.searchID, (this.inputEl.value = ''), this.instance?.triggerSearch(''), this.updateState('')),
               t.key === 'Enter' && t.preventDefault())
           }),
           this.inputEl.addEventListener('focus', () => {
@@ -92,30 +81,22 @@
       initContainer(e) {
         let t = document.querySelector(e)
         if (!t) {
-          console.error(
-            `[Pagefind Input component]: No container found for ${e} selector`
-          )
+          console.error(`[Pagefind Input component]: No container found for ${e} selector`)
           return
         }
         if (t.tagName === 'INPUT')
-          (console.warn(
-            `[Pagefind Input component]: Encountered input element for ${e} when a container was expected`
-          ),
-            console.warn(
-              '[Pagefind Input component]: Treating containerElement option as inputElement and proceeding'
-            ),
+          (console.warn(`[Pagefind Input component]: Encountered input element for ${e} when a container was expected`),
+            console.warn('[Pagefind Input component]: Treating containerElement option as inputElement and proceeding'),
             this.initExisting(e))
         else {
           t.innerHTML = ''
           let s = 0
           for (; document.querySelector(`#pfmod-input-${s}`); ) s += 1
-          let n = new r('form')
-            .class('pagefind-modular-input-wrapper')
-            .attrs({
-              role: 'search',
-              'aria-label': 'Search this site',
-              action: 'javascript:void(0);',
-            })
+          let n = new r('form').class('pagefind-modular-input-wrapper').attrs({
+            role: 'search',
+            'aria-label': 'Search this site',
+            action: 'javascript:void(0);',
+          })
           ;(new r('label')
             .attrs({ for: `pfmod-input-${s}`, 'data-pfmod-sr-hidden': 'true' })
             .text('Search this site')
@@ -130,9 +111,7 @@
               .attrs({ 'data-pfmod-suppressed': 'true' })
               .text('Clear')
               .handle('click', () => {
-                ;((this.inputEl.value = ''),
-                  this.instance.triggerSearch(''),
-                  this.updateState(''))
+                ;((this.inputEl.value = ''), this.instance.triggerSearch(''), this.updateState(''))
               })
               .addTo(n)),
             n.addTo(t))
@@ -141,15 +120,11 @@
       initExisting(e) {
         let t = document.querySelector(e)
         if (!t) {
-          console.error(
-            `[Pagefind Input component]: No input element found for ${e} selector`
-          )
+          console.error(`[Pagefind Input component]: No input element found for ${e} selector`)
           return
         }
         if (t.tagName !== 'INPUT') {
-          console.error(
-            `[Pagefind Input component]: Expected ${e} to be an <input> element`
-          )
+          console.error(`[Pagefind Input component]: Expected ${e} to be an <input> element`)
           return
         }
         this.inputEl = t
@@ -163,9 +138,7 @@
       register(e) {
         ;((this.instance = e),
           this.instance.on('search', (t, s) => {
-            this.inputEl &&
-              document.activeElement !== this.inputEl &&
-              ((this.inputEl.value = t), this.updateState(t))
+            this.inputEl && document.activeElement !== this.inputEl && ((this.inputEl.value = t), this.updateState(t))
           }))
       }
       focus() {
@@ -212,10 +185,7 @@
           .text(i.meta?.title)
           .attrs({ href: i.meta?.url || i.url })
           .addTo(n),
-        new r('p')
-          .class('pagefind-modular-list-excerpt')
-          .html(i.excerpt)
-          .addTo(s),
+        new r('p').class('pagefind-modular-list-excerpt').html(i.excerpt).addTo(s),
         e.element
       )
     },
@@ -241,9 +211,7 @@
           threshold: 0.01,
         }
         new IntersectionObserver((s, n) => {
-          this.result === null &&
-            s?.[0]?.isIntersecting &&
-            (this.load(), n.disconnect())
+          this.result === null && s?.[0]?.isIntersecting && (this.load(), n.disconnect())
         }, e).observe(this.placeholderNodes[0])
       }
       async load() {
@@ -251,8 +219,7 @@
         this.result = await this.rawResult.data()
         let e = this.resultFn(this.result),
           t = g(e)
-        for (; this.placeholderNodes.length > 1; )
-          this.placeholderNodes.pop().remove()
+        for (; this.placeholderNodes.length > 1; ) this.placeholderNodes.pop().remove()
         this.placeholderNodes[0].replaceWith(...t)
       }
     },
@@ -268,18 +235,14 @@
         )
           this.initContainer(e.containerElement)
         else {
-          console.error(
-            '[Pagefind ResultList component]: No selector supplied for containerElement'
-          )
+          console.error('[Pagefind ResultList component]: No selector supplied for containerElement')
           return
         }
       }
       initContainer(e) {
         let t = document.querySelector(e)
         if (!t) {
-          console.error(
-            `[Pagefind ResultList component]: No container found for ${e} selector`
-          )
+          console.error(`[Pagefind ResultList component]: No container found for ${e} selector`)
           return
         }
         this.containerEl = t
@@ -320,22 +283,17 @@
       )
         this.initContainer(e.containerElement)
       else {
-        console.error(
-          '[Pagefind Summary component]: No selector supplied for containerElement'
-        )
+        console.error('[Pagefind Summary component]: No selector supplied for containerElement')
         return
       }
     }
     initContainer(e) {
       let t = document.querySelector(e)
       if (!t) {
-        console.error(
-          `[Pagefind Summary component]: No container found for ${e} selector`
-        )
+        console.error(`[Pagefind Summary component]: No container found for ${e} selector`)
         return
       }
-      ;((this.containerEl = t),
-        (this.containerEl.innerText = this.defaultMessage))
+      ;((this.containerEl = t), (this.containerEl.innerText = this.defaultMessage))
     }
     register(e) {
       ;(e.on('search', (t, s) => {
@@ -351,8 +309,7 @@
           this.containerEl.innerText = `${s} result${s === 1 ? '' : 's'} for ${this.term}`
         }),
         e.on('loading', () => {
-          this.containerEl &&
-            (this.containerEl.innerText = `Searching for ${this.term}...`)
+          this.containerEl && (this.containerEl.innerText = `Searching for ${this.term}...`)
         }))
     }
   }
@@ -372,32 +329,24 @@
         (this.selectMultiple = e.selectMultiple ?? !1),
         !this.filter?.length)
       ) {
-        console.error(
-          '[Pagefind FilterPills component]: No filter option supplied, nothing to display'
-        )
+        console.error('[Pagefind FilterPills component]: No filter option supplied, nothing to display')
         return
       }
       if (e.containerElement) this.initContainer(e.containerElement)
       else {
-        console.error(
-          '[Pagefind FilterPills component]: No selector supplied for containerElement'
-        )
+        console.error('[Pagefind FilterPills component]: No selector supplied for containerElement')
         return
       }
     }
     initContainer(e) {
       let t = document.querySelector(e)
       if (!t) {
-        console.error(
-          `[Pagefind FilterPills component]: No container found for ${e} selector`
-        )
+        console.error(`[Pagefind FilterPills component]: No container found for ${e} selector`)
         return
       }
       t.innerHTML = ''
       let s = `pagefind_modular_filter_pills_${this.filter}`,
-        n = new r('div')
-          .class('pagefind-modular-filter-pills-wrapper')
-          .attrs({ role: 'group', 'aria-labelledby': s })
+        n = new r('div').class('pagefind-modular-filter-pills-wrapper').attrs({ role: 'group', 'aria-labelledby': s })
       ;(this.alwaysShow || n.attrs({ 'data-pfmod-hidden': !0 }),
         new r('div')
           .id(s)
@@ -405,25 +354,19 @@
           .attrs({ 'data-pfmod-sr-hidden': !0 })
           .text(`Filter results by ${this.filter}`)
           .addTo(n),
-        (this.pillContainer = new r('div')
-          .class('pagefind-modular-filter-pills')
-          .addTo(n)),
+        (this.pillContainer = new r('div').class('pagefind-modular-filter-pills').addTo(n)),
         (this.wrapper = n.addTo(t)))
     }
     update() {
       let e = this.available.map((t) => t[0]).join('~')
-      e == this.filterMemo
-        ? this.updateExisting()
-        : (this.renderNew(), (this.filterMemo = e))
+      e == this.filterMemo ? this.updateExisting() : (this.renderNew(), (this.filterMemo = e))
     }
     pushFilters() {
       let e = this.selected.filter((t) => t !== 'All')
       this.instance.triggerFilter(this.filter, e)
     }
     pillInner(e, t) {
-      return this.total
-        ? `<span aria-label="${e}">${e} (${t})</span>`
-        : `<span aria-label="${e}">${e}</span>`
+      return this.total ? `<span aria-label="${e}">${e} (${t})</span>` : `<span aria-label="${e}">${e}</span>`
     }
     renderNew() {
       this.available.forEach(([e, t]) => {
@@ -440,8 +383,7 @@
                   ? this.selected.push(e)
                   : (this.selected = [e]),
               this.selected?.length
-                ? this.selected?.length > 1 &&
-                  (this.selected = this.selected.filter((s) => s !== 'All'))
+                ? this.selected?.length > 1 && (this.selected = this.selected.filter((s) => s !== 'All'))
                 : (this.selected = ['All']),
               this.update(),
               this.pushFilters())
@@ -452,8 +394,7 @@
     updateExisting() {
       let e = [...this.pillContainer.childNodes]
       this.available.forEach(([t, s], n) => {
-        ;((e[n].innerHTML = this.pillInner(t, s)),
-          e[n].setAttribute('aria-pressed', this.selected.includes(t)))
+        ;((e[n].innerHTML = this.pillInner(t, s)), e[n].setAttribute('aria-pressed', this.selected.includes(t)))
       })
     }
     register(e) {
@@ -463,9 +404,7 @@
           this.selectMultiple ? (t = t.available) : (t = t.total)
           let s = t[this.filter]
           if (!s) {
-            console.warn(
-              `[Pagefind FilterPills component]: No possible values found for the ${this.filter} filter`
-            )
+            console.warn(`[Pagefind FilterPills component]: No possible values found for the ${this.filter} filter`)
             return
           }
           ;((this.available = Object.entries(s)),
@@ -482,8 +421,7 @@
         e.on('results', (t) => {
           this.pillContainer &&
             ((this.total = t?.unfilteredResultCount || 0),
-            this.available?.[0]?.[0] === 'All' &&
-              (this.available[0][1] = this.total),
+            this.available?.[0]?.[0] === 'All' && (this.available[0][1] = this.total),
             this.total || this.alwaysShow
               ? this.wrapper.removeAttribute('data-pfmod-hidden')
               : this.wrapper.setAttribute('data-pfmod-hidden', 'true'),
@@ -494,9 +432,7 @@
   var F = async (i = 50) => await new Promise((e) => setTimeout(e, i)),
     u
   try {
-    u = new URL(document.currentScript.src).pathname.match(
-      /^(.*\/)(?:pagefind-)?modular-ui.js.*$/
-    )[1]
+    u = new URL(document.currentScript.src).pathname.match(/^(.*\/)(?:pagefind-)?modular-ui.js.*$/)[1]
   } catch {
     u = '/pagefind/'
   }
@@ -536,15 +472,11 @@
     on(e, t) {
       if (!this.__hooks__[e]) {
         let s = Object.keys(this.__hooks__).join(', ')
-        console.error(
-          `[Pagefind Composable]: Unknown event type ${e}. Supported events: [${s}]`
-        )
+        console.error(`[Pagefind Composable]: Unknown event type ${e}. Supported events: [${s}]`)
         return
       }
       if (typeof t != 'function') {
-        console.error(
-          `[Pagefind Composable]: Expected callback to be a function, received ${typeof t}`
-        )
+        console.error(`[Pagefind Composable]: Expected callback to be a function, received ${typeof t}`)
         return
       }
       this.__hooks__[e].push(t)
@@ -558,15 +490,10 @@
         this.__search__(e, this.searchFilters))
     }
     triggerSearchWithFilters(e, t) {
-      ;((this.searchTerm = e),
-        (this.searchFilters = t),
-        this.__dispatch__('search', e, t),
-        this.__search__(e, t))
+      ;((this.searchTerm = e), (this.searchFilters = t), this.__dispatch__('search', e, t), this.__search__(e, t))
     }
     triggerFilters(e) {
-      ;((this.searchFilters = e),
-        this.__dispatch__('search', this.searchTerm, e),
-        this.__search__(this.searchTerm, e))
+      ;((this.searchFilters = e), this.__dispatch__('search', this.searchTerm, e), this.__search__(this.searchTerm, e))
     }
     triggerFilter(e, t) {
       ;((this.searchFilters = this.searchFilters || {}),
@@ -626,8 +553,7 @@
         }
         await e.options(this.pagefindOptions || {})
         for (let t of this.options.mergeIndex) {
-          if (!t.bundlePath)
-            throw new Error('mergeIndex requires a bundlePath parameter')
+          if (!t.bundlePath) throw new Error('mergeIndex requires a bundlePath parameter')
           let s = t.bundlePath
           ;(delete t.bundlePath, await e.mergeIndex(s, t))
         }

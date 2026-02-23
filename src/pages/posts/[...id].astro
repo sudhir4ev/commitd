@@ -10,7 +10,7 @@ import TableOfContents from '@components/TableOfContents.astro'
 import Giscus from '@components/Giscus.astro'
 
 export async function getStaticPaths() {
-  const posts = (await getCollection('blog'))
+  const posts = (await getCollection('posts'))
     .filter((post) => !post.data.draft)
     .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   return posts.map((post) => ({
@@ -18,9 +18,9 @@ export async function getStaticPaths() {
     props: post,
   }))
 }
-type Props = CollectionEntry<'blog'>
+type Props = CollectionEntry<'posts'>
 
-const posts = (await getCollection('blog'))
+const posts = (await getCollection('posts'))
   .filter((post) => !post.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
 
@@ -54,7 +54,7 @@ const { Content, headings } = await render(post)
 <Layout title={post.data.title} description={post.data.description}>
   <Container>
     <div class="animate">
-      <BackToPrevious href="/blog">Back to blog</BackToPrevious>
+      <BackToPrevious href="/posts">Back to posts</BackToPrevious>
     </div>
     <div class="my-10 space-y-1">
       <div class="animate flex items-center gap-1.5">
@@ -62,11 +62,7 @@ const { Content, headings } = await render(post)
           <FormattedDate date={post.data.date} />
         </div>
         &bull;
-        {
-          post.body && (
-            <div class="font-base text-sm">{readingTime(post.body)}</div>
-          )
-        }
+        {post.body && <div class="font-base text-sm">{readingTime(post.body)}</div>}
       </div>
       <h1 class="animate text-3xl font-semibold text-black dark:text-white">
         {post.data.title}
@@ -86,7 +82,13 @@ const { Content, headings } = await render(post)
         ) : null
       }
     </div>
-    {headings.length > 0 && <TableOfContents headings={headings} />}
+    {
+      headings.length > 0 && (
+        <div class="mb-8">
+          <TableOfContents headings={headings} />
+        </div>
+      )
+    }
     <article class="animate">
       <Content />
       <div class="mt-24">

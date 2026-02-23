@@ -7,6 +7,8 @@ const config = {
   tabWidth: 2,
   semi: false,
   singleQuote: true,
+  proseWrap: 'always',
+  printWidth: 120,
 }
 
 export default {

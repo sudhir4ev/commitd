@@ -6,11 +6,7 @@ var __getProtoOf = Object.getPrototypeOf
 var __hasOwnProp = Object.prototype.hasOwnProperty
 var __commonJS = (cb, mod) =>
   function __require() {
-    return (
-      mod ||
-        (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod),
-      mod.exports
-    )
+    return (mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports)
   }
 var __copyProps = (to, from, except, desc) => {
   if ((from && typeof from === 'object') || typeof from === 'function') {
@@ -30,9 +26,7 @@ var __toESM = (mod, isNodeMode, target) => (
     // file that has been converted to a CommonJS file using a Babel-
     // compatible transform (i.e. "__esModule" has not been set), then set
     // "default" to the CommonJS "module.exports" for node compatibility.
-    isNodeMode || !mod || !mod.__esModule
-      ? __defProp(target, 'default', { value: mod, enumerable: true })
-      : target,
+    isNodeMode || !mod || !mod.__esModule ? __defProp(target, 'default', { value: mod, enumerable: true }) : target,
     mod
   )
 )
@@ -54,10 +48,7 @@ var require_mark = __commonJS({
               return typeof obj
             }
           : function (obj) {
-              return obj &&
-                typeof Symbol === 'function' &&
-                obj.constructor === Symbol &&
-                obj !== Symbol.prototype
+              return obj && typeof Symbol === 'function' && obj.constructor === Symbol && obj !== Symbol.prototype
                 ? 'symbol'
                 : typeof obj
             }
@@ -97,14 +88,9 @@ var require_mark = __commonJS({
         }
       var DOMIterator = (function () {
         function DOMIterator2(ctx) {
-          var iframes =
-            arguments.length > 1 && arguments[1] !== void 0
-              ? arguments[1]
-              : true
-          var exclude =
-            arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : []
-          var iframesTimeout =
-            arguments.length > 3 && arguments[3] !== void 0 ? arguments[3] : 5e3
+          var iframes = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : true
+          var exclude = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : []
+          var iframesTimeout = arguments.length > 3 && arguments[3] !== void 0 ? arguments[3] : 5e3
           classCallCheck(this, DOMIterator2)
           this.ctx = ctx
           this.iframes = iframes
@@ -126,9 +112,7 @@ var require_mark = __commonJS({
                 } else if (Array.isArray(this.ctx)) {
                   ctx = this.ctx
                 } else if (typeof this.ctx === 'string') {
-                  ctx = Array.prototype.slice.call(
-                    document.querySelectorAll(this.ctx)
-                  )
+                  ctx = Array.prototype.slice.call(document.querySelectorAll(this.ctx))
                 } else {
                   ctx = [this.ctx]
                 }
@@ -147,10 +131,7 @@ var require_mark = __commonJS({
             {
               key: 'getIframeContents',
               value: function getIframeContents(ifr, successFn) {
-                var errorFn =
-                  arguments.length > 2 && arguments[2] !== void 0
-                    ? arguments[2]
-                    : function () {}
+                var errorFn = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : function () {}
                 var doc = void 0
                 try {
                   var ifrWin = ifr.contentWindow
@@ -230,14 +211,11 @@ var require_mark = __commonJS({
                   },
                   function (ifr) {
                     eachCalled++
-                    _this2.waitForIframes(
-                      ifr.querySelector('html'),
-                      function () {
-                        if (!--eachCalled) {
-                          done()
-                        }
+                    _this2.waitForIframes(ifr.querySelector('html'), function () {
+                      if (!--eachCalled) {
+                        done()
                       }
-                    )
+                    })
                   },
                   function (handled) {
                     if (!handled) {
@@ -251,10 +229,7 @@ var require_mark = __commonJS({
               key: 'forEachIframe',
               value: function forEachIframe(ctx, filter, each) {
                 var _this3 = this
-                var end =
-                  arguments.length > 3 && arguments[3] !== void 0
-                    ? arguments[3]
-                    : function () {}
+                var end = arguments.length > 3 && arguments[3] !== void 0 ? arguments[3] : function () {}
                 var ifr = ctx.querySelectorAll('iframe'),
                   open = ifr.length,
                   handled = 0
@@ -289,21 +264,13 @@ var require_mark = __commonJS({
             {
               key: 'createIterator',
               value: function createIterator(ctx, whatToShow, filter) {
-                return document.createNodeIterator(
-                  ctx,
-                  whatToShow,
-                  filter,
-                  false
-                )
+                return document.createNodeIterator(ctx, whatToShow, filter, false)
               },
             },
             {
               key: 'createInstanceOnIframe',
               value: function createInstanceOnIframe(contents) {
-                return new DOMIterator2(
-                  contents.querySelector('html'),
-                  this.iframes
-                )
+                return new DOMIterator2(contents.querySelector('html'), this.iframes)
               },
             },
             {
@@ -379,9 +346,7 @@ var require_mark = __commonJS({
                 ifr.forEach(function (ifrDict) {
                   if (!ifrDict.handled) {
                     _this4.getIframeContents(ifrDict.val, function (con) {
-                      _this4
-                        .createInstanceOnIframe(con)
-                        .forEachNode(whatToShow, eCb, fCb)
+                      _this4.createInstanceOnIframe(con).forEachNode(whatToShow, eCb, fCb)
                     })
                   }
                 })
@@ -389,13 +354,7 @@ var require_mark = __commonJS({
             },
             {
               key: 'iterateThroughNodes',
-              value: function iterateThroughNodes(
-                whatToShow,
-                ctx,
-                eachCb,
-                filterCb,
-                doneCb
-              ) {
+              value: function iterateThroughNodes(whatToShow, ctx, eachCb, filterCb, doneCb) {
                 var _this5 = this
                 var itr = this.createIterator(ctx, whatToShow, filterCb)
                 var ifr = [],
@@ -413,12 +372,7 @@ var require_mark = __commonJS({
                     this.forEachIframe(
                       ctx,
                       function (currIfr) {
-                        return _this5.checkIframeFilter(
-                          node,
-                          prevNode,
-                          currIfr,
-                          ifr
-                        )
+                        return _this5.checkIframeFilter(node, prevNode, currIfr, ifr)
                       },
                       function (con) {
                         _this5.createInstanceOnIframe(con).forEachNode(
@@ -446,10 +400,7 @@ var require_mark = __commonJS({
               key: 'forEachNode',
               value: function forEachNode(whatToShow, each, filter) {
                 var _this6 = this
-                var done =
-                  arguments.length > 3 && arguments[3] !== void 0
-                    ? arguments[3]
-                    : function () {}
+                var done = arguments.length > 3 && arguments[3] !== void 0 ? arguments[3] : function () {}
                 var contexts = this.getContexts()
                 var open = contexts.length
                 if (!open) {
@@ -457,17 +408,11 @@ var require_mark = __commonJS({
                 }
                 contexts.forEach(function (ctx) {
                   var ready = function ready2() {
-                    _this6.iterateThroughNodes(
-                      whatToShow,
-                      ctx,
-                      each,
-                      filter,
-                      function () {
-                        if (--open <= 0) {
-                          done()
-                        }
+                    _this6.iterateThroughNodes(whatToShow, ctx, each, filter, function () {
+                      if (--open <= 0) {
+                        done()
                       }
-                    )
+                    })
                   }
                   if (_this6.iframes) {
                     _this6.waitForIframes(ctx, ready)
@@ -482,8 +427,7 @@ var require_mark = __commonJS({
             {
               key: 'matches',
               value: function matches(element, selector) {
-                var selectors =
-                    typeof selector === 'string' ? [selector] : selector,
+                var selectors = typeof selector === 'string' ? [selector] : selector,
                   fn =
                     element.matches ||
                     element.matchesSelector ||
@@ -524,17 +468,13 @@ var require_mark = __commonJS({
           {
             key: 'log',
             value: function log(msg) {
-              var level =
-                arguments.length > 1 && arguments[1] !== void 0
-                  ? arguments[1]
-                  : 'debug'
+              var level = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : 'debug'
               var log2 = this.opt.log
               if (!this.opt.debug) {
                 return
               }
               if (
-                (typeof log2 === 'undefined' ? 'undefined' : _typeof(log2)) ===
-                  'object' &&
+                (typeof log2 === 'undefined' ? 'undefined' : _typeof(log2)) === 'object' &&
                 typeof log2[level] === 'function'
               ) {
                 log2[level]('mark.js: ' + msg)
@@ -579,31 +519,15 @@ var require_mark = __commonJS({
             value: function createSynonymsRegExp(str) {
               var syn = this.opt.synonyms,
                 sens = this.opt.caseSensitive ? '' : 'i',
-                joinerPlaceholder =
-                  this.opt.ignoreJoiners || this.opt.ignorePunctuation.length
-                    ? '\0'
-                    : ''
+                joinerPlaceholder = this.opt.ignoreJoiners || this.opt.ignorePunctuation.length ? '\0' : ''
               for (var index in syn) {
                 if (syn.hasOwnProperty(index)) {
                   var value = syn[index],
-                    k1 =
-                      this.opt.wildcards !== 'disabled'
-                        ? this.setupWildcardsRegExp(index)
-                        : this.escapeStr(index),
-                    k2 =
-                      this.opt.wildcards !== 'disabled'
-                        ? this.setupWildcardsRegExp(value)
-                        : this.escapeStr(value)
+                    k1 = this.opt.wildcards !== 'disabled' ? this.setupWildcardsRegExp(index) : this.escapeStr(index),
+                    k2 = this.opt.wildcards !== 'disabled' ? this.setupWildcardsRegExp(value) : this.escapeStr(value)
                   if (k1 !== '' && k2 !== '') {
                     str = str.replace(
-                      new RegExp(
-                        '(' +
-                          this.escapeStr(k1) +
-                          '|' +
-                          this.escapeStr(k2) +
-                          ')',
-                        'gm' + sens
-                      ),
+                      new RegExp('(' + this.escapeStr(k1) + '|' + this.escapeStr(k2) + ')', 'gm' + sens),
                       joinerPlaceholder +
                         ('(' + this.processSynomyms(k1) + '|') +
                         (this.processSynomyms(k2) + ')') +
@@ -662,18 +586,13 @@ var require_mark = __commonJS({
             value: function createJoinersRegExp(str) {
               var joiner = []
               var ignorePunctuation = this.opt.ignorePunctuation
-              if (
-                Array.isArray(ignorePunctuation) &&
-                ignorePunctuation.length
-              ) {
+              if (Array.isArray(ignorePunctuation) && ignorePunctuation.length) {
                 joiner.push(this.escapeStr(ignorePunctuation.join('')))
               }
               if (this.opt.ignoreJoiners) {
                 joiner.push('\\u00ad\\u200b\\u200c\\u200d')
               }
-              return joiner.length
-                ? str.split(/\u0000+/).join('[' + joiner.join('') + ']*')
-                : str
+              return joiner.length ? str.split(/\u0000+/).join('[' + joiner.join('') + ']*') : str
             },
           },
           {
@@ -734,10 +653,7 @@ var require_mark = __commonJS({
                     if (handled.indexOf(dct2) > -1) {
                       return false
                     }
-                    str = str.replace(
-                      new RegExp('[' + dct2 + ']', 'gm' + sens),
-                      '[' + dct2 + ']'
-                    )
+                    str = str.replace(new RegExp('[' + dct2 + ']', 'gm' + sens), '[' + dct2 + ']')
                     handled.push(dct2)
                   }
                   return true
@@ -772,9 +688,7 @@ var require_mark = __commonJS({
                   lsJoin = '\\s' + (lsJoin ? lsJoin : this.escapeStr(chars))
                   return '()([^' + lsJoin + ']*' + str + '[^' + lsJoin + ']*)'
                 case 'exactly':
-                  return (
-                    '(^|\\s' + lsJoin + ')(' + str + ')(?=$|\\s' + lsJoin + ')'
-                  )
+                  return '(^|\\s' + lsJoin + ')(' + str + ')(?=$|\\s' + lsJoin + ')'
               }
             },
           },
@@ -814,10 +728,7 @@ var require_mark = __commonJS({
             key: 'checkRanges',
             value: function checkRanges(array) {
               var _this3 = this
-              if (
-                !Array.isArray(array) ||
-                Object.prototype.toString.call(array[0]) !== '[object Object]'
-              ) {
+              if (!Array.isArray(array) || Object.prototype.toString.call(array[0]) !== '[object Object]') {
                 this.log('markRanges() will only accept an array of objects')
                 this.opt.noMatch(array)
                 return []
@@ -829,10 +740,7 @@ var require_mark = __commonJS({
                   return a.start - b.start
                 })
                 .forEach(function (item) {
-                  var _callNoMatchOnInvalid = _this3.callNoMatchOnInvalidRanges(
-                      item,
-                      last
-                    ),
+                  var _callNoMatchOnInvalid = _this3.callNoMatchOnInvalidRanges(item, last),
                     start = _callNoMatchOnInvalid.start,
                     end = _callNoMatchOnInvalid.end,
                     valid = _callNoMatchOnInvalid.valid
@@ -855,18 +763,10 @@ var require_mark = __commonJS({
               if (range && typeof range.start !== 'undefined') {
                 start = parseInt(range.start, 10)
                 end = start + parseInt(range.length, 10)
-                if (
-                  this.isNumeric(range.start) &&
-                  this.isNumeric(range.length) &&
-                  end - last > 0 &&
-                  end - start > 0
-                ) {
+                if (this.isNumeric(range.start) && this.isNumeric(range.length) && end - last > 0 && end - start > 0) {
                   valid = true
                 } else {
-                  this.log(
-                    'Ignoring invalid or overlapping range: ' +
-                      ('' + JSON.stringify(range))
-                  )
+                  this.log('Ignoring invalid or overlapping range: ' + ('' + JSON.stringify(range)))
                   this.opt.noMatch(range)
                 }
               } else {
@@ -882,11 +782,7 @@ var require_mark = __commonJS({
           },
           {
             key: 'checkWhitespaceRanges',
-            value: function checkWhitespaceRanges(
-              range,
-              originalLength,
-              string
-            ) {
+            value: function checkWhitespaceRanges(range, originalLength, string) {
               var end = void 0,
                 valid = true,
                 max = string.length,
@@ -896,21 +792,15 @@ var require_mark = __commonJS({
               end = start + parseInt(range.length, 10)
               if (end > max) {
                 end = max
-                this.log(
-                  'End range automatically set to the max value of ' + max
-                )
+                this.log('End range automatically set to the max value of ' + max)
               }
               if (start < 0 || end - start < 0 || start > max || end > max) {
                 valid = false
                 this.log('Invalid range: ' + JSON.stringify(range))
                 this.opt.noMatch(range)
-              } else if (
-                string.substring(start, end).replace(/\s+/g, '') === ''
-              ) {
+              } else if (string.substring(start, end).replace(/\s+/g, '') === '') {
                 valid = false
-                this.log(
-                  'Skipping whitespace only range: ' + JSON.stringify(range)
-                )
+                this.log('Skipping whitespace only range: ' + JSON.stringify(range))
                 this.opt.noMatch(range)
               }
               return {
@@ -954,16 +844,7 @@ var require_mark = __commonJS({
           {
             key: 'matchesExclude',
             value: function matchesExclude(el) {
-              return DOMIterator.matches(
-                el,
-                this.opt.exclude.concat([
-                  'script',
-                  'style',
-                  'title',
-                  'head',
-                  'html',
-                ])
-              )
+              return DOMIterator.matches(el, this.opt.exclude.concat(['script', 'style', 'title', 'head', 'html']))
             },
           },
           {
@@ -984,13 +865,7 @@ var require_mark = __commonJS({
           },
           {
             key: 'wrapRangeInMappedTextNode',
-            value: function wrapRangeInMappedTextNode(
-              dict,
-              start,
-              end,
-              filterCb,
-              eachCb
-            ) {
+            value: function wrapRangeInMappedTextNode(dict, start, end, filterCb, eachCb) {
               var _this5 = this
               dict.nodes.every(function (n, i) {
                 var sibl = dict.nodes[i + 1]
@@ -1026,23 +901,14 @@ var require_mark = __commonJS({
           },
           {
             key: 'wrapMatches',
-            value: function wrapMatches(
-              regex,
-              ignoreGroups,
-              filterCb,
-              eachCb,
-              endCb
-            ) {
+            value: function wrapMatches(regex, ignoreGroups, filterCb, eachCb, endCb) {
               var _this6 = this
               var matchIdx = ignoreGroups === 0 ? 0 : ignoreGroups + 1
               this.getTextNodes(function (dict) {
                 dict.nodes.forEach(function (node) {
                   node = node.node
                   var match = void 0
-                  while (
-                    (match = regex.exec(node.textContent)) !== null &&
-                    match[matchIdx] !== ''
-                  ) {
+                  while ((match = regex.exec(node.textContent)) !== null && match[matchIdx] !== '') {
                     if (!filterCb(match[matchIdx], node)) {
                       continue
                     }
@@ -1052,11 +918,7 @@ var require_mark = __commonJS({
                         pos += match[i].length
                       }
                     }
-                    node = _this6.wrapRangeInTextNode(
-                      node,
-                      pos,
-                      pos + match[matchIdx].length
-                    )
+                    node = _this6.wrapRangeInTextNode(node, pos, pos + match[matchIdx].length)
                     eachCb(node.previousSibling)
                     regex.lastIndex = 0
                   }
@@ -1067,21 +929,12 @@ var require_mark = __commonJS({
           },
           {
             key: 'wrapMatchesAcrossElements',
-            value: function wrapMatchesAcrossElements(
-              regex,
-              ignoreGroups,
-              filterCb,
-              eachCb,
-              endCb
-            ) {
+            value: function wrapMatchesAcrossElements(regex, ignoreGroups, filterCb, eachCb, endCb) {
               var _this7 = this
               var matchIdx = ignoreGroups === 0 ? 0 : ignoreGroups + 1
               this.getTextNodes(function (dict) {
                 var match = void 0
-                while (
-                  (match = regex.exec(dict.value)) !== null &&
-                  match[matchIdx] !== ''
-                ) {
+                while ((match = regex.exec(dict.value)) !== null && match[matchIdx] !== '') {
                   var start = match.index
                   if (matchIdx !== 0) {
                     for (var i = 1; i < matchIdx; i++) {
@@ -1108,21 +961,12 @@ var require_mark = __commonJS({
           },
           {
             key: 'wrapRangeFromIndex',
-            value: function wrapRangeFromIndex(
-              ranges,
-              filterCb,
-              eachCb,
-              endCb
-            ) {
+            value: function wrapRangeFromIndex(ranges, filterCb, eachCb, endCb) {
               var _this8 = this
               this.getTextNodes(function (dict) {
                 var originalLength = dict.value.length
                 ranges.forEach(function (range, counter) {
-                  var _checkWhitespaceRange = _this8.checkWhitespaceRanges(
-                      range,
-                      originalLength,
-                      dict.value
-                    ),
+                  var _checkWhitespaceRange = _this8.checkWhitespaceRanges(range, originalLength, dict.value),
                     start = _checkWhitespaceRange.start,
                     end = _checkWhitespaceRange.end,
                     valid = _checkWhitespaceRange.valid
@@ -1132,12 +976,7 @@ var require_mark = __commonJS({
                       start,
                       end,
                       function (node) {
-                        return filterCb(
-                          node,
-                          range,
-                          dict.value.substring(start, end),
-                          counter
-                        )
+                        return filterCb(node, range, dict.value.substring(start, end), counter)
                       },
                       function (node) {
                         eachCb(node, range)
@@ -1220,9 +1059,7 @@ var require_mark = __commonJS({
               this.opt = opt
               var totalMatches = 0,
                 fn = 'wrapMatches'
-              var _getSeparatedKeywords = this.getSeparatedKeywords(
-                  typeof sv === 'string' ? [sv] : sv
-                ),
+              var _getSeparatedKeywords = this.getSeparatedKeywords(typeof sv === 'string' ? [sv] : sv),
                 kwArr = _getSeparatedKeywords.keywords,
                 kwArrLen = _getSeparatedKeywords.length,
                 sens = this.opt.caseSensitive ? '' : 'i',
@@ -1271,10 +1108,7 @@ var require_mark = __commonJS({
               var totalMatches = 0,
                 ranges = this.checkRanges(rawRanges)
               if (ranges && ranges.length) {
-                this.log(
-                  'Starting to mark with the following ranges: ' +
-                    JSON.stringify(ranges)
-                )
+                this.log('Starting to mark with the following ranges: ' + JSON.stringify(ranges))
                 this.wrapRangeFromIndex(
                   ranges,
                   function (node, range, match, counter) {
@@ -1362,12 +1196,7 @@ var require_mark = __commonJS({
           {
             key: 'iterator',
             get: function get$$1() {
-              return new DOMIterator(
-                this.ctx,
-                this.opt.iframes,
-                this.opt.exclude,
-                this.opt.iframesTimeout
-              )
+              return new DOMIterator(this.ctx, this.opt.iframes, this.opt.exclude, this.opt.iframesTimeout)
             },
           },
         ])
@@ -1426,8 +1255,7 @@ var PagefindHighlight = class {
             exclude: ['[data-pagefind-ignore]', '[data-pagefind-ignore] *'],
           }
     ;(_a = this.markOptions).className ?? (_a.className = 'pagefind__highlight')
-    ;(_b = this.markOptions).exclude ??
-      (_b.exclude = ['[data-pagefind-ignore]', '[data-pagefind-ignore] *'])
+    ;(_b = this.markOptions).exclude ?? (_b.exclude = ['[data-pagefind-ignore]', '[data-pagefind-ignore] *'])
     this.markOptions.separateWordSearch = false
     this.highlight()
   }

@@ -2,7 +2,10 @@
 
 ## Essence
 
-A clean, commerce-first design system that prioritizes clarity and trust. The aesthetic is professional and approachable: ample whitespace, a restrained palette with bold accent use for promotions and actions, and a clear typographic hierarchy. The emotional response is confidence and ease—the interface feels reliable and easy to scan, with promotions and savings surfaced without visual noise.
+A clean, commerce-first design system that prioritizes clarity and trust. The aesthetic is professional and
+approachable: ample whitespace, a restrained palette with bold accent use for promotions and actions, and a clear
+typographic hierarchy. The emotional response is confidence and ease—the interface feels reliable and easy to scan, with
+promotions and savings surfaced without visual noise.
 
 ## Color Palette
 
@@ -26,7 +29,8 @@ A clean, commerce-first design system that prioritizes clarity and trust. The ae
 ### Semantic
 
 - Success / selected: vibrant green — selection checkmark button, selected add-on state
-- Error / promotion: `#ca112f` (or similar red) — “FREE”, promotional text, badges (“Recommended”, “EXTRA $50 OFF”, “YOU SAVE”), banner backgrounds
+- Error / promotion: `#ca112f` (or similar red) — “FREE”, promotional text, badges (“Recommended”, “EXTRA $50 OFF”, “YOU
+  SAVE”), banner backgrounds
 - Info: light blue background — informational banners (e.g. “Enjoy up to $713 OFF”), promotions block within plan cards
 
 ### Borders / Dividers / Shadows
@@ -45,14 +49,14 @@ A clean, commerce-first design system that prioritizes clarity and trust. The ae
 
 ### Scale
 
-| Level   | Size   | Weight | Line Height | Usage                    |
-|--------|--------|--------|-------------|--------------------------|
-| H1     | 40px   | 900    | 1.2         | Page titles              |
-| H2     | 32px   | 900    | 1.2         | Section titles           |
-| H3     | 24px   | 700    | 1.25        | Plan/product card titles |
-| H4     | 18px   | 700    | 1.5         | Subsections, card labels |
-| Body   | 18px   | 400/700| 1.5         | Body, links              |
-| Caption| 14px   | 400/700| 1.5         | Helper text, counts      |
+| Level   | Size | Weight  | Line Height | Usage                    |
+| ------- | ---- | ------- | ----------- | ------------------------ |
+| H1      | 40px | 900     | 1.2         | Page titles              |
+| H2      | 32px | 900     | 1.2         | Section titles           |
+| H3      | 24px | 700     | 1.25        | Plan/product card titles |
+| H4      | 18px | 700     | 1.5         | Subsections, card labels |
+| Body    | 18px | 400/700 | 1.5         | Body, links              |
+| Caption | 14px | 400/700 | 1.5         | Helper text, counts      |
 
 Letter-spacing: tight on headings (e.g. 0.24px–0.36px); captions ~0.28px–0.42px.
 
@@ -77,7 +81,8 @@ Letter-spacing: tight on headings (e.g. 0.24px–0.36px); captions ~0.28px–0.4
 - lg: 24px
 - xl: 32px
 
-Vertical rhythm between sections (delivery → tabs → cards, or filter → grid) is consistent; cards and option strips have generous internal padding.
+Vertical rhythm between sections (delivery → tabs → cards, or filter → grid) is consistent; cards and option strips have
+generous internal padding.
 
 ## Elevation
 
@@ -97,12 +102,14 @@ Vertical rhythm between sections (delivery → tabs → cards, or filter → gri
 
 ### Buttons
 
-- Primary (e.g. “Check out”, “Next”): dark grey/black background, white bold text, rounded corners; full-width where appropriate
+- Primary (e.g. “Check out”, “Next”): dark grey/black background, white bold text, rounded corners; full-width where
+  appropriate
 - Selected / success: green fill, white checkmark
 - Secondary (“Add”): outlined, black text, rounded
 - Default: clear hierarchy between primary and secondary
 
-Hover/active: slight darkening or opacity change; transitions short (e.g. 150–200ms). Cursor pointer on interactive elements.
+Hover/active: slight darkening or opacity change; transitions short (e.g. 150–200ms). Cursor pointer on interactive
+elements.
 
 ### Links
 
@@ -120,7 +127,8 @@ Hover/active: slight darkening or opacity change; transitions short (e.g. 150–
 
 ### Principles
 
-Motion is minimal and purposeful: quick state feedback rather than decorative animation. Transitions feel snappy and predictable.
+Motion is minimal and purposeful: quick state feedback rather than decorative animation. Transitions feel snappy and
+predictable.
 
 ### Patterns
 
@@ -132,14 +140,19 @@ Motion is minimal and purposeful: quick state feedback rather than decorative an
 ## Design Principles
 
 - **Clarity over decoration.** Layout and typography do the work; color and weight highlight key actions and savings.
-- **Promotions are first-class.** Red and bold are used consistently for discounts, badges, and “YOU SAVE” so value is scannable.
-- **Consistent card language.** Plan cards, add-on cards, and product cards share structure: title, features, pricing, single primary action (Select / Add / checkmark).
+- **Promotions are first-class.** Red and bold are used consistently for discounts, badges, and “YOU SAVE” so value is
+  scannable.
+- **Consistent card language.** Plan cards, add-on cards, and product cards share structure: title, features, pricing,
+  single primary action (Select / Add / checkmark).
 - **Trust through restraint.** Whitespace and clear hierarchy make the experience feel professional and low-pressure.
 - **One primary action per block.** Each card or strip has one clear CTA (Select, Add, Check out, Next).
 
 ## Implementation Notes
 
-- **CSS custom properties:** Existing theming uses `--background`, `--foreground`, `--primary` (`#5c50bb`), `--destructive`, `--border`, `--ring`; add `--accent-link` (`#0062f5`) and semantic success green if not present.
+- **CSS custom properties:** Existing theming uses `--background`, `--foreground`, `--primary` (`#5c50bb`),
+  `--destructive`, `--border`, `--ring`; add `--accent-link` (`#0062f5`) and semantic success green if not present.
 - **Font loading:** Museo, Poppins, Lato (and optionally Roboto) via `@font-face` with `font-display: swap`.
-- **Naming:** Prefer semantic names (e.g. `--color-promotion`, `--color-success`) for red and green rather than brand-only names.
-- **Components:** Tabs (underline active), horizontal plan/product cards (scroll or grid), option strips (icon + text), discount summary (label left, amount right), primary CTA button (dark, full-width when sticky).
+- **Naming:** Prefer semantic names (e.g. `--color-promotion`, `--color-success`) for red and green rather than
+  brand-only names.
+- **Components:** Tabs (underline active), horizontal plan/product cards (scroll or grid), option strips (icon + text),
+  discount summary (label left, amount right), primary CTA button (dark, full-width when sticky).

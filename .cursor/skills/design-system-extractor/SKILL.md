@@ -1,23 +1,28 @@
 ---
 name: design-system-extractor
-description: Extracts design systems from websites and product screenshots, producing markdown documentation for design engineers and coding agents. Use when the user provides a URL or screenshots and wants to extract colors, typography, spacing, elevation, interactive states, and motion into a reusable design system document.
+description:
+  Extracts design systems from websites and product screenshots, producing markdown documentation for design engineers
+  and coding agents. Use when the user provides a URL or screenshots and wants to extract colors, typography, spacing,
+  elevation, interactive states, and motion into a reusable design system document.
 ---
 
 # Design System Extractor
 
-Extract design systems from websites and screenshots. Output is markdown documentation (max 3000 words) that enables design engineers and coding agents to recreate the aesthetic.
+Extract design systems from websites and screenshots. Output is markdown documentation (max 3000 words) that enables
+design engineers and coding agents to recreate the aesthetic.
 
 ## When to Use
 
-- User provides a **URL**: Navigate the site, traverse primary flows, use DevTools to extract computed styles. Use browser automation extensively.
+- User provides a **URL**: Navigate the site, traverse primary flows, use DevTools to extract computed styles. Use
+  browser automation extensively.
 - User provides **screenshots only**: Analyze images qualitatively; do not infer precise values.
 
 ## Input Handling
 
-| Input | Approach |
-|-------|----------|
-| **URL** | Navigate full primary journey (landing, key feature pages, authenticated views if accessible, settings/modals/forms). Click buttons, hover elements, trigger animations. Use DevTools for computed styles where accessible. |
-| **Screenshots** | Describe what’s visible qualitatively. No precise values unless clearly readable. |
+| Input           | Approach                                                                                                                                                                                                                    |
+| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **URL**         | Navigate full primary journey (landing, key feature pages, authenticated views if accessible, settings/modals/forms). Click buttons, hover elements, trigger animations. Use DevTools for computed styles where accessible. |
+| **Screenshots** | Describe what’s visible qualitatively. No precise values unless clearly readable.                                                                                                                                           |
 
 ## Workflow
 
@@ -31,18 +36,19 @@ Extract design systems from websites and screenshots. Output is markdown documen
 
 Document only primitives—not full component specs.
 
-| Category | Extract |
-|----------|--------|
-| **Colors** | Backgrounds (primary, secondary, surface), text (primary, secondary, muted), accent/brand, semantic (success, warning, error, info), borders, dividers, shadows |
-| **Typography** | Font families (headings, body, mono), weight scale, size scale (h1→body/caption), line heights, letter spacing, treatments (uppercase, tracking) |
-| **Spacing** | Base unit if systematic, common values, container widths, margins, grid if apparent |
-| **Elevation** | Shadow styles (subtle, medium, heavy), border radii, layering/z-index conventions |
-| **Interactive states** | Hover, focus, active, disabled; transition timing/easing if extractable; cursor behaviors |
-| **Motion** | Entrance/exit, micro-interactions, loading states; timing/easing (exact if from DevTools, qualitative otherwise) |
+| Category               | Extract                                                                                                                                                         |
+| ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Colors**             | Backgrounds (primary, secondary, surface), text (primary, secondary, muted), accent/brand, semantic (success, warning, error, info), borders, dividers, shadows |
+| **Typography**         | Font families (headings, body, mono), weight scale, size scale (h1→body/caption), line heights, letter spacing, treatments (uppercase, tracking)                |
+| **Spacing**            | Base unit if systematic, common values, container widths, margins, grid if apparent                                                                             |
+| **Elevation**          | Shadow styles (subtle, medium, heavy), border radii, layering/z-index conventions                                                                               |
+| **Interactive states** | Hover, focus, active, disabled; transition timing/easing if extractable; cursor behaviors                                                                       |
+| **Motion**             | Entrance/exit, micro-interactions, loading states; timing/easing (exact if from DevTools, qualitative otherwise)                                                |
 
 ### 3. Name the System
 
-Create a unique name that evokes the aesthetic without referencing the original product. Examples: “Arctic Dawn” (clean, light), “Obsidian” (dark, sharp), “Playground” (playful, rounded), “Bauhaus Mono” (geometric, minimal).
+Create a unique name that evokes the aesthetic without referencing the original product. Examples: “Arctic Dawn” (clean,
+light), “Obsidian” (dark, sharp), “Playground” (playful, rounded), “Bauhaus Mono” (geometric, minimal).
 
 ### 4. Generate Report
 

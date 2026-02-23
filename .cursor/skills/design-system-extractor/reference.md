@@ -8,7 +8,8 @@ Use this structure when generating the design system markdown. Max 3000 words to
 
 ## Essence
 
-2–3 sentences capturing the overall feel, personality, and design philosophy. What emotional response does it evoke? What design principles are evident?
+2–3 sentences capturing the overall feel, personality, and design philosophy. What emotional response does it evoke?
+What design principles are evident?
 
 ## Color Palette
 
@@ -49,12 +50,12 @@ Use this structure when generating the design system markdown. Max 3000 words to
 
 ### Scale
 
-| Level | Size | Weight | Line Height | Usage |
-|-------|------|--------|-------------|-------|
-| H1 | 48px | 700 | 1.1 | Page titles |
-| H2 | … | … | … | … |
-| Body | … | … | … | … |
-| Caption | … | … | … | … |
+| Level   | Size | Weight | Line Height | Usage       |
+| ------- | ---- | ------ | ----------- | ----------- |
+| H1      | 48px | 700    | 1.1         | Page titles |
+| H2      | …    | …      | …           | …           |
+| Body    | …    | …      | …           | …           |
+| Caption | …    | …      | …           | …           |
 
 ### Treatments
 

@@ -13,15 +13,14 @@ export const HOME: Metadata = {
   DESCRIPTION: 'Astro Micro is an accessible theme for Astro.',
 }
 
-export const BLOG: Metadata = {
-  TITLE: 'Blog',
+export const POSTS: Metadata = {
+  TITLE: 'Posts',
   DESCRIPTION: 'A collection of articles on topics I am passionate about.',
 }
 
 export const PROJECTS: Metadata = {
   TITLE: 'Projects',
-  DESCRIPTION:
-    'A collection of my projects with links to repositories and live demos.',
+  DESCRIPTION: 'A collection of my projects with links to repositories and live demos.',
 }
 
 export const SOCIALS: Socials = [
