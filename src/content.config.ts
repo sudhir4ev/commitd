@@ -24,4 +24,9 @@ const projects = defineCollection({
   }),
 })
 
-export const collections = { posts, projects }
+const intro = defineCollection({
+  loader: glob({ pattern: 'intro.mdx', base: './assets/content' }),
+  schema: z.object({}),
+})
+
+export const collections = { posts, projects, intro }
