@@ -1,8 +1,15 @@
 ---
 title: 'Design Language System (DLS)'
-description:
-  'Singtel DLS: design framework and component library for web and mobile — architecture, adoption, and impact.'
+description: 'DLS: design framework and component library for web and mobile — architecture, adoption, and impact.'
 date: '2022-05-09'
+team: Singtel
+role:
+  - Lead Engineer
+  - Developer Advocate
+tags:
+  - Component Library
+  - Design System
+  - Teams
 ---
 
 ## Business Context
@@ -87,8 +94,8 @@ API while encapsulating shared state via React Context:
 ```
 
 This was chosen over a monolithic props API (`<Tabs tabs={[{label, content}]} />`) because it gives product teams the
-flexibility to compose content without being constrained by what the library author anticipated. It also allows
-individual parts (e.g., just Tabs.List) to be used independently.
+flexibility to compose content without being constrained by what the library author anticipated. Heavily inspired by
+[Radix UI](https://www.radix-ui.com/)
 
 ### Bundling Strategy
 
