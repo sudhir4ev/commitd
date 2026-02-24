@@ -15,8 +15,8 @@ tags:
 ## Business Context
 
 **What was the product?** The Design Language System (DLS) is Singtel's design framework and companion component library
-serving web and mobile platforms (React-Native), serving as the single source of truth for UI/UX across all consumer-facing
-digital products - the main eShop website, and mobile applications.
+serving web and mobile platforms (React-Native), serving as the single source of truth for UI/UX across all
+consumer-facing digital products - the main eShop website, and mobile applications.
 
 **Who were the users?** Two distinct groups: end consumers interacting with Singtel's digital storefronts, and internal
 engineering and product teams using DLS as a platform dependency. In a design system, the developer experience of the
@@ -39,17 +39,35 @@ DLS is structured as two distinct but philosophically aligned libraries: a React
 library for mobile. This is a deliberate architectural boundary reflects organizational priorities. The libraries are
 developed and maintained by different teams, and ran independent release cycles.
 
-DLS Product Ecosystem
+### DLS Product Ecosystem
 
 ```mermaid
 flowchart TD
-    A[DLS Figma] --> B[DLS Web]
-    A[DLS Figma] --> C[DLS Mobile]
-    B --> D[DLS Web Components]
-    C --> E[DLS React Native Components]
-    B --> H[DLS Web Storybook]
-    C --> I[DLS React Native Preview App]
-    D --> J[Product A]
+    subgraph UX team["DLS UX Team"]
+        figma[DLS Figma]
+    end
+    subgraph DLS eng["DLS Engineering Team"]
+        web[DLS Web]
+        mobile[DLS Mobile]
+        web-comp[DLS Web Components]
+        rn-comp[DLS React Native Components]
+        storybook[DLS Web Storybook]
+        preview[DLS React Native Preview App]
+    end
+    subgraph Product["Product Teams"]
+        prod-a[Product A]
+        prod-b[Product B]
+    end
+    figma --> web
+    figma --> mobile
+    web --> web-comp
+    mobile --> rn-comp
+    web --> storybook
+    mobile --> preview
+    web-comp --> prod-a
+    rn-comp --> prod-a
+    web-comp --> prod-b
+    rn-comp --> prod-b
 ```
 
 ### Design Token Architecture
@@ -99,7 +117,7 @@ package.json for subpath imports. Consumer applications can import individual co
 TypeScript declarations are emitted via tsc alongside the Rollup build, ensuring consumers get full type safety and IDE
 autocompletion without a separate type-only package.
 
-### How DLS succeeded 🎉
+## Why DLS succeeded 🎉
 
 The repository is managed as a polyrepo with web and React Native modules developed and maintained by different teams.
 DLS development was democratized, with the DLS core team as the decision-making body responsible for enforcing quality
