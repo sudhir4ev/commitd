@@ -8,11 +8,7 @@ import { rehypeMermaidCLI } from 'rehype-mermaid-cli'
 // https://astro.build/config
 export default defineConfig({
   site: 'https://astro.app',
-  integrations: [
-    sitemap(),
-    mdx({ rehypePlugins: [rehypeMermaidCLI] }),
-    pagefind(),
-  ],
+  integrations: [sitemap(), mdx({ rehypePlugins: [rehypeMermaidCLI] }), pagefind()],
   vite: {
     plugins: [tailwindcss()],
   },
