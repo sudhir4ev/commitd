@@ -1,14 +1,42 @@
-# Introducing [Astro Micro 🔬](https://astro-micro.vercel.app/)
+# Commit.D
 
-Astro Micro is an accessible theme for Astro. It's a fork of [Mark Horn's](https://github.com/markhorn-dev) popular
-theme [Astro Nano](https://astro-nano-demo.vercel.app/). Like Nano, Micro comes with zero frameworks installed.
+Personal blog and project portfolio built with [Astro](https://astro.build).
 
-Micro adds features like [Pagefind](https://pagefind.app) for search, [Giscus](https://giscus.app) for comments, and
-more. For a full list of changes, see this [blog post](https://astro-micro.vercel.app/blog/00-micro-changelog).
+## Stack
 
-Micro still comes with everything great about Nano — full type safety, a sitemap, an RSS feed, and Markdown + MDX
-support. Styled with TailwindCSS and preconfigured with system, light, and dark themes.
+- **Astro 5** — static site with MDX
+- **Tailwind CSS 4** — styling
+- **PageFind** — client-side search (astro-pagefind)
+- **RSS** — `@astrojs/rss`
+- **Sitemap** — `@astrojs/sitemap`
+- **Mermaid** — diagrams in content via `rehype-mermaid-cli`
 
----
+## Content
 
-![astro-micro](https://github.com/user-attachments/assets/fc9b55b9-53e5-4933-9d23-936e1c61e6c2)
+- **Posts** — `assets/content/posts/*.{md,mdx}` (title, description, date, tags, draft)
+- **Projects** — `assets/content/projects/*.{md,mdx}` (title, description, date, demoURL, repoURL, team, role, tags,
+  draft)
+- **Intro** — `assets/content/intro.mdx` (home hero)
+
+Site config (title, description, socials, counts) lives in `src/consts.ts`.
+
+## Scripts
+
+| Command                | Description      |
+| ---------------------- | ---------------- |
+| `npm run dev`          | Dev server       |
+| `npm run build`        | Production build |
+| `npm run preview`      | Preview build    |
+| `npm run format`       | Prettier write   |
+| `npm run format:check` | Prettier check   |
+
+## Dev
+
+```bash
+npm install
+npm run dev
+```
+
+Set `site` in `astro.config.mjs` for your production URL (sitemap/RSS).
+
+Built with [astro-micro](https://github.com/trevortylerlee/astro-micro)
