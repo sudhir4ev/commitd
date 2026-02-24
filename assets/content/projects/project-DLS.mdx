@@ -15,8 +15,8 @@ tags:
 ## Business Context
 
 **What was the product?** The Design Language System (DLS) is Singtel's design framework and companion component library
-serving web and mobile platforms (React-Native), serving as the single source of truth for UI across all consumer-facing
-digital products - the main eShop website, dotcom marketing pages, and mobile applications.
+serving web and mobile platforms (React-Native), serving as the single source of truth for UI/UX across all consumer-facing
+digital products - the main eShop website, and mobile applications.
 
 **Who were the users?** Two distinct groups: end consumers interacting with Singtel's digital storefronts, and internal
 engineering and product teams using DLS as a platform dependency. In a design system, the developer experience of the
@@ -35,29 +35,22 @@ cycles.
 
 ## Frontend Architecture
 
-Library Architecture: React + React Native (Dual Platform)
+### Library Architecture: React + React Native
 
 DLS is structured as two distinct but philosophically aligned libraries: a React library for web and a React Native
-library for mobile. This is a deliberate architectural boundary. Sharing a single codebase across web and native (such
-as via React Native Web) was evaluated and rejected because rendering constraints, accessibility APIs, and platform
-idioms diverge enough that a unified abstraction would produce suboptimal components on both platforms.
+library for mobile. This is a deliberate architectural boundary reflects organizational priorities. The libraries are
+developed and maintained by different teams, and ran independent release cycles.
 
-DLS Repository (Monorepo)
+DLS Repository
 
-```text
-├── packages/
-│   ├── dls-web/          # React component library
-│   │   ├── src/
-│   │   │   ├── components/   # Atoms, Molecules, Organisms (Atomic Design)
-│   │   │   ├── tokens/       # Design tokens (colours, spacing, typography)
-│   │   │   ├── hooks/        # Shared behavioural hooks
-│   │   │   └── utils/
-│   │   └── rollup.config.js  # Bundled as ESM + CJS
-│   ├── dls-native/       # React Native component library
-│   └── dls-tokens/       # Shared design token source (Style Dictionary)
-├── apps/
-│   └── storybook/        # Documentation & visual testing environment
-└── .github/workflows/    # CI/CD: test, build, publish
+```mermaid
+flowchart TD
+    A[DLS Figma] --> B[DLS Web]
+    A[DLS Figma] --> C[DLS Mobile]
+    B --> D[DLS Web Components]
+    C --> E[DLS React Native Components]
+    B --> H[DLS Web Storybook]
+    C --> I[DLS React Native Preview App]
 ```
 
 ### Design Token Architecture
@@ -130,7 +123,7 @@ DLS follows Semantic Versioning with a structured release process:
 
 - Patch: bug fixes, backwards-compatible
 - Minor: new components or props, backwards-compatible
-- Major: breaking API changes (component renames, removed props, token renames)
+- Major: breaking API changes, with a deprecation period and codemods scripts
 
 Major versions were managed carefully — product teams cannot absorb breaking changes on short notice. The release
 process includes:
