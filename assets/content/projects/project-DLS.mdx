@@ -35,13 +35,11 @@ cycles.
 
 ## Frontend Architecture
 
-### Library Architecture: React + React Native
-
 DLS is structured as two distinct but philosophically aligned libraries: a React library for web and a React Native
 library for mobile. This is a deliberate architectural boundary reflects organizational priorities. The libraries are
 developed and maintained by different teams, and ran independent release cycles.
 
-DLS Repository
+DLS Product Ecosystem
 
 ```mermaid
 flowchart TD
@@ -51,6 +49,7 @@ flowchart TD
     C --> E[DLS React Native Components]
     B --> H[DLS Web Storybook]
     C --> I[DLS React Native Preview App]
+    D --> J[Product A]
 ```
 
 ### Design Token Architecture
