@@ -34,7 +34,8 @@
     "pagefind": "^1.4.0",
     "prettier": "^3.8.1",
     "prettier-plugin-astro": "^0.14.1",
-    "prettier-plugin-tailwindcss": "^0.7.2"
+    "prettier-plugin-tailwindcss": "^0.7.2",
+    "rehype-mermaid-cli": "^0.2.1"
   },
   "lint-staged": {
     "*.{js,ts,jsx,tsx,json,css,scss,md,mdx,astro,yml,yaml}": "prettier --write"
