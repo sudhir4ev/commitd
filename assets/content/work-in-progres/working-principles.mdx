@@ -1,0 +1,42 @@
+## Working Across Backend, DevOps, and Product
+
+Effective frontend engineering at scale requires close collaboration across disciplines. I have worked in
+cross-functional squads, partnering with Spring Boot backend engineers, AWS DevOps teams, AEM platform teams, and
+product owners. The best results come from frontend engineers who understand and communicate effectively with their
+collaborators.
+
+With backend teams, I enocourage contract-first API design: agreeing on schema, error shapes, and pagination before a
+line of code is written. (Pact, OpenApi) This avoids the all-too-common situation where the frontend is blocked by an
+API that doesn't match what the UI actually needs.
+
+In collaboration with DevOps and platform teams, I approach CI/CD pipelines and infrastructure as integral products. I
+have developed and maintained pipelines using GitHub Actions and Bitbucket Pipelines, managed deployments to AWS S3, and
+worked with Nomad-based container orchestration. I have setup VPS with Ansible and Tailscale access. I consider
+infrastructure a shared responsibility.
+
+With product and design teams, I act as a translator. I evaluate technical feasibility, challenge designs that introduce
+unnecessary complexity, and advocate for design systems as a shared language between design and engineering.
+
+## Leadership Style
+
+My leadership style is servant-technical: I focus on elevating the capabilities of those around me rather than seeking
+to be the most knowledgeable person in the room.
+
+In practice:
+
+- I use architecture RFCs and PRD as educational tools. I write RFCs to document decisions, surface underlying
+  assumptions, encourage constructive challenge, and foster shared understanding. Effective RFCs clarify tradeoffs and
+  promote collective ownership of outcomes.
+- I approach code review as an opportunity for mentorship. During pull request reviews, I prioritize asking questions,
+  such as "What happens here if the API returns a 429?" This approach encourages critical reasoning rather than simply
+  providing answers. One should also be mindful of long PR reviews comments, which can come across as intimidating. If
+  there are several issues to address, it might be prudent to have an in-person chat.
+- I promote standards through automation. Rules that depend on manual enforcement are prone to inconsistency. Tools such
+  as ESLint, Prettier, commit-lint, and Husky hooks automate style and quality enforcement, allowing code reviews to
+  focus on design considerations.
+- I approach onboarding as a systematic process. I have conducted structured onboarding and training sessions for teams
+  adopting shared platforms (DLS). I consider the onboarding experience a product: if a new engineer is not productive
+  within the first week, this indicates a failure in documentation or tooling rather than individual capability.
+- I prioritize psychological safety in technical decision-making. I actively encourage junior engineers to question
+  architectural choices. Many of the most significant improvements have resulted from individuals asking, "why do we do
+  it this way?"
