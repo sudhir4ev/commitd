@@ -4,6 +4,7 @@ import mdx from '@astrojs/mdx'
 import pagefind from 'astro-pagefind'
 import tailwindcss from '@tailwindcss/vite'
 import { rehypeMermaidCLI } from 'rehype-mermaid-cli'
+import rehypeExternalLinks from 'rehype-external-links';
 
 // https://astro.build/config
 export default defineConfig({
@@ -20,6 +21,15 @@ export default defineConfig({
       type: 'shiki',
       excludeLangs: ['mermaid'],
     },
-    rehypePlugins: [rehypeMermaidCLI],
+    rehypePlugins: [
+      rehypeMermaidCLI,
+      [
+        rehypeExternalLinks,
+        {
+          target: '_blank',
+          rel: ['noopener', 'noreferrer'], // Best practice for security and performance
+        },
+      ],
+    ],
   },
 })
