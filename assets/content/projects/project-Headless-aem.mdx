@@ -17,13 +17,12 @@ tags:
   - Cypress
 ---
 
-AEM is a powerful CMS. But when our average page load reached nearly 8 seconds and every minor style tweak waited weeks
-for release, it became painfully clear: frontend code locked inside HTML templates costs speed and agility. The frontend
-stack owned by traditional MVC architecture blocked growth and innovation.
+AEM is a powerful CMS. But when our average page load reached nearly 8 seconds and every update - major or minor waited
+weeks for release, it became painfully clear that frontend code locked inside HTML templates costs speed and agility.
+The frontend stack owned by traditional MVC architecture blocked growth and innovation.
 
-This is the story of how we broke that coupling and replaced it with a Gatsby-based static site generation pipeline,
-gathered 3x page load speed improvements. It is also the story of what that actually costs - because decoupling is never
-just a technical problem.
+This is how we broke that coupling and replaced it with a Gatsby-based static site generation pipeline, gathered **3x**
+page load speed improvements.
 
 ```mermaid
 %%{ init: {
@@ -266,26 +265,25 @@ rather than selling it as seamlessly better.
 
 ---
 
-## Problem 3: Latency Is a Feature, Until It Isn't
+## Problem 3: 'Publish' does not meet reality.
 
-Static site generation introduces inherent latency between authoring and production. An author publishes content in AEM.
-That publish event needs to trigger a Gatsby build. The build runs. The output deploys. Only then is the change live.
+Static site generation introduces inherent latency between authoring and production:
 
-On a content-heavy site with a large page inventory, that pipeline is not instantaneous. For most content updates -
-evergreen pages, product descriptions, standard campaign assets - this is fine. Nobody is watching a stopwatch.
+Author publishes in AEM → triggers Gatsby build → build runs → output deploys → content is live.
 
-For time-sensitive content - a flash sale going live at midnight, a price correction, a breaking announcement - the
-pipeline latency is suddenly a critical dependency. The question is not whether this will matter. It will. The question
-is whether you've had the conversation about it before it matters for the first time at 11:58 PM.
+For content-heavy sites with large page inventories, this pipeline is not instantaneous. This is acceptable for most
+updates (evergreen pages, product descriptions, standard campaign assets).
 
-We hadn't, initially. The expectation from some stakeholders was that "publish" meant "live in seconds." Managing that
-expectation required going back to square one: what does the content lifecycle actually look like now, step by step, and
-what are the realistic time bounds at each stage?
+For time-sensitive content (flash sales, price corrections, breaking announcements), pipeline latency becomes a critical
+dependency. The question isn't does this really matter, its about aligning expectations before it matters - at 11:58 PM
+on a Friday night.
 
-This is a product and process conversation, not an engineering one. Engineering can optimise build times. Engineering
-cannot change the fundamental model - at-least for now. (Incremental builds in Gatsby are still experimental and
-unstable) If this model doesn't fit a stakeholder's workflow, the right answer is to surface that conflict early - not
-to promise a faster build as a workaround.
+We initially did not. Some stakeholders expected “publish” to mean “live in seconds.” Managing that required mapping the
+actual content lifecycle step‑by‑step and establishing realistic time bounds per stage.
+
+This is a product/process conversation, not purely an engineering one. Engineering can optimise build times but cannot
+change the fundamental model – at least not yet (incremental builds in Gatsby remain experimental and unstable). If the
+model doesn't fit a stakeholder's workflow, surface the conflict early. Do not promise faster builds as a workaround.
 
 ---
 
@@ -293,7 +291,7 @@ to promise a faster build as a workaround.
 
 The ten-minute deploy is real. Previously, a typical frontend change waited up to two weeks for the next full AEM
 release cycle, with deployment windows often blocked by backend priorities. Now, the same change moves from code to
-production in under ten minutes. Frontend changes - styling, component logic, layout updates - no longer depend on an
+production in under ten minutes. Frontend changes like styling, component logic, layout updates no longer depend on an
 AEM release. The team can ship independently. That independence compounds over time: fewer blocked deploys, faster
 iteration cycles on campaign microsites, and a cleaner separation between "the content team has a problem" and "the
 frontend team has a problem."
@@ -302,21 +300,21 @@ This was a godsend for the ongoing UI/UX revamp, where new components were being
 
 Product owners can review and test changes in the preview environment before campaigns go live. That capability did not
 exist before. The friction of the preview workflow is a real cost, but it is a cost paid for something that was not
-possible at all under the previous architecture.
+possible with the previous architecture.
 
 ---
 
 ## What This Was Actually About
 
-Headless AEM is a reasonable technical decision in the right context. But the work of getting there is mostly not
-technical.
+Headless AEM is technically reasonable in the right context. However, most of the implementation effort is
+non‑technical:
 
-It is the work of mapping two teams' content model assumptions onto a shared interface. It is the work of redesigning an
-authoring workflow that authors did not ask to have redesigned. It is the work of setting accurate expectations about
-what "publish" means in a build-based deployment model.
+- Aligning two teams’ content model assumptions onto a shared interface.
+- Redesigning authoring workflows that authors never asked to change.
+- Setting accurate expectations for “publish” in a build‑based deployment model.
 
-The page load speeds dropped to a few seconds. An easy sell for the product owners, the harder part was convincing folks
-using the new system that the tradeoffs were worth it, and then making sure they actually were. This is where most of
-the project lived.
+Page load speeds dropped to a few seconds is an easy sell to product owners. The harder part was convincing end users
+that the tradeoffs were worth it, then validating that they actually were. That is where the majority of project effort
+resided.
 
 ---
