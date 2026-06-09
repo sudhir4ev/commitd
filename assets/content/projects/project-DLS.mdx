@@ -27,7 +27,7 @@ visual inconsistency, duplicated effort, diverging accessibility standards, and 
 engineering. Designers created assets that engineering teams re-implemented differently, sometimes multiple times. DLS
 centralized this into a single, versioned, well-documented library.
 
-**Scale:** DLS underpins all Singtel consumer-facing digital properties - spanning millions of users across Singapore's
+**Scale:** DLS underpins all Singtel consumer-facing digital products - spanning millions of users across Singapore's
 primary telco digital channels. Internally, it serves multiple product teams shipping changes on continuous delivery
 cycles.
 
@@ -35,11 +35,11 @@ cycles.
 
 ## Impact
 
-- Consistency: Achieved visual and UX consistency across all Singtel consumer-facing digital properties through a single
+- Consistency: Achieved visual and UX consistency across 4 Singtel consumer-facing digital products through a single
   versioned library. UX team was able to effect change in a consistent manner across all products and the process was
   streamlined.
 - Velocity: Product teams report faster feature delivery by consuming DLS components rather than building from scratch -
-  estimated 30-40% reduction in UI implementation time for standard UI patterns
+  estimated 30-40% reduction in man hours allocated to frontend time work
 - Quality: Centralised accessibility compliance reduced the surface area for WCAG violations; automated checks catch
   regressions before production
 - Engineer experience: Storybook documentation and TypeScript typings reduced the "how do I use this?" questions
@@ -233,7 +233,7 @@ several axes:
 
 ## Technical Challenges & Pain Points
 
-### Challenge 1: Breaking Change Coordination at Scale
+### Challenge 1: Breaking Change coordination
 
 **Root cause:** With 5+ product teams consuming DLS across different release cadences, a major version bump creates a
 coordination problem. If Team A upgrades to DLS v3 and Team B does not, shared components or design tokens visually
